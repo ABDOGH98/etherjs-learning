@@ -9,11 +9,11 @@ async function main() {
 		process.env.RPC_URL,
 	);
 	const encryptedJson = fs.readFileSync("./.encryptedKey.json", "utf8");
-	// const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
-	let wallet = new ethers.Wallet.fromEncryptedJsonSync(
-		encryptedJson,
-		process.env.PRIVATE_KEY_PASSWORD,
-	);
+	const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+	// let wallet = new ethers.Wallet.fromEncryptedJsonSync(
+	// 	encryptedJson,
+	// 	process.env.PRIVATE_KEY_PASSWORD,
+	// );
 	wallet = await wallet.connect(provider);
 	console.log("Wallet --> ", wallet);
 	const abi = fs.readFileSync(
